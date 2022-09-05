@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "node --loader ts-node/esm index.ts",
-    "tsnode": "ts-node"
+    "serve": "node --loader ts-node/esm index.ts"
   },
   "author": "chillout2san",
   "license": "ISC",
