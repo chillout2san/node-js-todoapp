@@ -1,12 +1,12 @@
 import { createUlid } from "../../utils/ulid.js";
 
-const statusList = {
+export const statusList = {
   DONE: "完了",
   WORK_ON_PROGRESS: "作業中",
   UN_ASSIGNED: "未確認",
 } as const;
 
-type StatusType = typeof statusList[keyof typeof statusList];
+export type StatusType = typeof statusList[keyof typeof statusList];
 
 export class Todo {
   private readonly id: string = "";

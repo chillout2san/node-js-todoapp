@@ -1,5 +1,5 @@
-import { Todo } from "./todo";
+import { StatusType, Todo } from "./todo";
 
 export interface ITodoRepository {
-  getTodos: () => Todo[];
+  create: (title: string, status: StatusType, content: string) => void;
 }
