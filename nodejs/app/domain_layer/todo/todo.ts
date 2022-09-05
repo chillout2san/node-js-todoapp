@@ -8,7 +8,7 @@ const statusList = {
 
 type StatusType = typeof statusList[keyof typeof statusList];
 
-export class NewTodo {
+export class Todo {
   private readonly id: string = "";
   private title: string = "";
   private status: StatusType | "" = "";
