@@ -1,7 +1,5 @@
-import http from "http";
+import { router } from "./interface_layer/router.js";
 
-const server = http.createServer((req, res) => {
-  res.end("hogehogeだよ");
+router.listen(8000, () => {
+  console.log("listening on port 8000...");
 });
-
-server.listen(8000);
