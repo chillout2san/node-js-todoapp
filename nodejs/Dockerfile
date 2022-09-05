@@ -3,6 +3,6 @@ WORKDIR /usr/src/app
 
 COPY ./app ./
 
-RUN npm install -g yarn && yarn install
+RUN yarn install
 
 EXPOSE 8080
