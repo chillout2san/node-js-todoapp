@@ -1,5 +1,8 @@
 import { router } from "./interface_layer/router.js";
+import { database } from "./infrastructure_layer/database.js";
 
-router.listen(8000, () => {
+const PORT = 8000;
+
+router.listen(PORT, () => {
   console.log("listening on port 8000...");
 });
