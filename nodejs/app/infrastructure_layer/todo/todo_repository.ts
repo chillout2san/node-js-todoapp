@@ -1,5 +1,5 @@
 import mysql from "mysql2";
-import { StatusType } from "../../domain_layer/todo/todo";
+import { StatusType } from "../../domain_layer/todo/todo.js";
 
 export class TodoRepository {
   database: mysql.Connection;
@@ -8,6 +8,14 @@ export class TodoRepository {
     this.database = database;
   }
 
+  /**
+   * 新しいtodoを作成する
+   * @param id id
+   * @param title タイトル
+   * @param status todoの状態
+   * @param content todoの中身
+   * @returns
+   */
   create(id: string, title: string, status: StatusType, content: string) {
     const sql = "INSERT INTO todos SET ?";
 

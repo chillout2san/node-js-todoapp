@@ -11,7 +11,7 @@ export type StatusType = typeof statusList[keyof typeof statusList];
 export class Todo {
   private readonly id: string = "";
   private title: string = "";
-  private status: StatusType | "" = "";
+  private status: StatusType = statusList.UN_ASSIGNED;
   private content: string = "";
 
   constructor(
@@ -45,7 +45,7 @@ export class Todo {
    * @returns
    */
   public isValid() {
-    if (this.id === "" || this.title === "" || this.status === "") {
+    if (this.id === "" || this.title === "") {
       return false;
     }
     return true;
@@ -65,12 +65,35 @@ export class Todo {
   }
 
   /**
-   * todoオブジェクトの指定のプロパティ一つを返却する
-   * @param property todoオブジェクトの任意のプロパティ名
-   * @returns
+   * idを返却する
+   * @returns 
    */
-  getProperty(property: "id" | "title" | "status" | "content") {
-    return this[property];
+  getId() {
+    return this.id
+  }
+
+  /**
+   * titleを返却する
+   * @returns 
+   */
+  getTitle() {
+    return this.title
+  }
+
+  /**
+   * statusを返却する
+   * @returns 
+   */
+  getStatus() {
+    return this.status
+  }
+
+  /**
+   * contentを返却する
+   * @returns 
+   */
+  getContent() {
+    return this.content
   }
 
   /**
