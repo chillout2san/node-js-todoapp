@@ -2,11 +2,6 @@ import { Todo } from "../../../domain_layer/todo/todo.js";
 import { TodoRepository } from "../../../infrastructure_layer/todo/todo_repository.js";
 import { InputDto, OutPutDto } from "./create_dto.js";
 
-interface Result {
-  hasError: boolean;
-  message: string;
-}
-
 export class CreateUseCase {
   todoRepository: TodoRepository;
 
@@ -26,11 +21,6 @@ export class CreateUseCase {
       };
     }
 
-    return this.todoRepository.create(
-      newTodo.getId(),
-      newTodo.getTitle(),
-      newTodo.getStatus(),
-      newTodo.getContent()
-    );
+    return newTodo.create(this.todoRepository);
   }
 }

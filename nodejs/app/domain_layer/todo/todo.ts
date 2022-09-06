@@ -1,3 +1,4 @@
+import { TodoRepository } from "../../infrastructure_layer/todo/todo_repository.js";
 import { createUlid } from "../../utils/ulid.js";
 
 export const statusList = {
@@ -8,11 +9,18 @@ export const statusList = {
 
 export type StatusType = typeof statusList[keyof typeof statusList];
 
+export interface TodoType {
+  id: string;
+  title: string;
+  status: StatusType;
+  content: string;
+}
+
 export class Todo {
-  private readonly id: string = "";
-  private title: string = "";
-  private status: StatusType = statusList.UN_ASSIGNED;
-  private content: string = "";
+  private readonly id: TodoType["id"] = "";
+  private title: TodoType["title"] = "";
+  private status: TodoType["status"] = statusList.UN_ASSIGNED;
+  private content: TodoType["content"] = "";
 
   constructor(
     id: string,
@@ -66,34 +74,34 @@ export class Todo {
 
   /**
    * idを返却する
-   * @returns 
+   * @returns
    */
   getId() {
-    return this.id
+    return this.id;
   }
 
   /**
    * titleを返却する
-   * @returns 
+   * @returns
    */
   getTitle() {
-    return this.title
+    return this.title;
   }
 
   /**
    * statusを返却する
-   * @returns 
+   * @returns
    */
   getStatus() {
-    return this.status
+    return this.status;
   }
 
   /**
    * contentを返却する
-   * @returns 
+   * @returns
    */
   getContent() {
-    return this.content
+    return this.content;
   }
 
   /**
@@ -118,5 +126,14 @@ export class Todo {
    */
   setContent(content: string) {
     this.content = content;
+  }
+
+  create(todoRepository: TodoRepository) {
+    return todoRepository.create(
+      this.id,
+      this.title,
+      this.status,
+      this.content
+    );
   }
 }
