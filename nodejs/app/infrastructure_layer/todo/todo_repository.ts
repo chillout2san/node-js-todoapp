@@ -41,8 +41,8 @@ export class TodoRepository {
       return {
         hasError: false,
         message: "",
-        // TODO: 型が壊れているので何とかしたい
-        todos: result as unknown as TodoType[],
+        // TODO: 型キャストがヤバいので何とかしたい
+        todos: result[0] as unknown as TodoType[],
       };
     } catch (error) {
       return {
