@@ -127,13 +127,4 @@ export class Todo {
   setContent(content: string) {
     this.content = content;
   }
-
-  create(todoRepository: TodoRepository) {
-    return todoRepository.create(
-      this.id,
-      this.title,
-      this.status,
-      this.content
-    );
-  }
 }

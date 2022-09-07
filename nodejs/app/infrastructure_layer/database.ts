@@ -1,8 +1,10 @@
-import mysql from "mysql2";
+import mysql from "mysql2/promise";
 
-export const database = mysql.createConnection({
-  host: "db",
-  user: "root",
-  password: "root_password",
-  database: "todoapp",
-});
+export const database = async () => {
+  return await mysql.createConnection({
+    host: "db",
+    user: "root",
+    password: "root_password",
+    database: "todoapp",
+  });
+};

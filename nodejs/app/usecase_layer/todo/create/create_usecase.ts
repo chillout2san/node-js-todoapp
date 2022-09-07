@@ -9,7 +9,7 @@ export class CreateUseCase {
     this.todoRepository = todoRepository;
   }
 
-  exec(inputDto: InputDto): OutPutDto {
+  async exec(inputDto: InputDto): Promise<OutPutDto> {
     const { title, status, content } = inputDto;
 
     const newTodo = new Todo("", title, status, content);
@@ -21,6 +21,11 @@ export class CreateUseCase {
       };
     }
 
-    return newTodo.create(this.todoRepository);
+    return await this.todoRepository.create(
+      newTodo.getId(),
+      newTodo.getTitle(),
+      newTodo.getStatus(),
+      newTodo.getContent()
+    );
   }
 }
