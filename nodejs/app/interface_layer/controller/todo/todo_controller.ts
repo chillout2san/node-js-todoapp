@@ -1,11 +1,11 @@
 import express from "express";
-import { StatusType, TodoType } from "../../../domain_layer/todo/todo.js";
+import { TodoType } from "../../../domain_layer/todo/todo.js";
 import { database } from "../../../infrastructure_layer/database.js";
 import { TodoRepository } from "../../../infrastructure_layer/todo/todo_repository.js";
 import { CreateUseCase } from "../../../usecase_layer/todo/create/create_usecase.js";
 import { FetchAllUseCase } from "../../../usecase_layer/todo/fetch_all/fetch_all_usecase.js";
 
-export const todoRouter = express.Router();
+export const todoController = express.Router();
 
 const todoRepository = new TodoRepository(database());
 
@@ -20,8 +20,7 @@ interface CreateResponse {
   hasError: boolean;
   errorMessage: string;
 }
-
-todoRouter.post(
+todoController.post(
   "/create",
   async (req: express.Request, res: express.Response<CreateResponse>) => {
     const createUseCase = new CreateUseCase(todoRepository);
@@ -53,8 +52,7 @@ interface FetchAllResponse {
   errorMessage: string;
   todos: TodoType[];
 }
-
-todoRouter.post(
+todoController.post(
   "/fetch-all",
   async (req: express.Request, res: express.Response<FetchAllResponse>) => {
     const fetchAllUseCase = new FetchAllUseCase(todoRepository);
