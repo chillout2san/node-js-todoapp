@@ -1,4 +1,4 @@
-import { createUlid } from "../../utils/ulid";
+import { createUlid } from "../../utils/ulid.js";
 
 export const statusList = {
   DONE: "完了",
@@ -8,6 +8,7 @@ export const statusList = {
 
 export type StatusType = typeof statusList[keyof typeof statusList];
 
+// TODO: Todoクラスから引っ張ってきたい。
 export interface TodoType {
   id: string;
   title: string;

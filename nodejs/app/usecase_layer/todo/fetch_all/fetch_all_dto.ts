@@ -1,7 +1,5 @@
-import { TodoType } from "../../../domain_layer/todo/todo";
+import { TodoType } from "../../../domain_layer/todo/todo.js";
 
 export interface OutPutDto {
-  hasError: boolean;
-  message: string;
   todos: TodoType[];
 }
