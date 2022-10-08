@@ -1,5 +1,4 @@
-import { TodoRepository } from "../../infrastructure_layer/todo/todo_repository.js";
-import { createUlid } from "../../utils/ulid.js";
+import { createUlid } from "../../utils/ulid";
 
 export const statusList = {
   DONE: "完了",
@@ -16,54 +15,30 @@ export interface TodoType {
   content: string;
 }
 
-export class Todo {
-  private readonly id: TodoType["id"] = "";
-  private title: TodoType["title"] = "";
-  private status: TodoType["status"] = statusList.UN_ASSIGNED;
-  private content: TodoType["content"] = "";
+class Todo {
+  private readonly id: TodoType["id"];
+  private title: TodoType["title"];
+  private status: TodoType["status"];
+  private content: TodoType["content"];
 
-  constructor(
-    id: string,
-    title: string,
-    status: StatusType | "",
-    content: string
-  ) {
-    if (id === "") {
-      this.id = createUlid();
+  constructor(id: string, title: string, status: StatusType, content: string) {
+    if (id === "" || title === "") {
+      throw {
+        errorMessage: "idとtitleは必須項目です。",
+      };
     }
 
-    if (title === "") {
-      return;
-    }
+    this.id = id;
     this.title = title;
-
-    if (status === "") {
-      return;
-    }
     this.status = status;
-
-    if (content === "") {
-      return;
-    }
     this.content = content;
-  }
-
-  /**
-   * 有効にインスタンス化されたか判定する
-   * @returns
-   */
-  public isValid() {
-    if (this.id === "" || this.title === "") {
-      return false;
-    }
-    return true;
   }
 
   /**
    * todoオブジェクトのプロパティを全て返却する
    * @returns
    */
-  getAll() {
+  getAllProperty() {
     return {
       id: this.id,
       title: this.title,
@@ -128,3 +103,23 @@ export class Todo {
     this.content = content;
   }
 }
+
+const create = (title: string, content: string) => {
+  const id = createUlid();
+  const status = statusList.UN_ASSIGNED;
+  return new Todo(id, title, status, content);
+};
+
+const parse = (
+  id: string,
+  title: string,
+  status: StatusType,
+  content: string
+) => {
+  return new Todo(id, title, status, content);
+};
+
+export const TodoFactory = {
+  create,
+  parse,
+};
