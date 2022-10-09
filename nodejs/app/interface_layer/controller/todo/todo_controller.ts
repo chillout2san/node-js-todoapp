@@ -3,6 +3,7 @@ import { TodoType } from "../../../domain_layer/todo/todo.js";
 import { database } from "../../../infrastructure_layer/database.js";
 import { TodoRepository } from "../../../infrastructure_layer/todo/todo_repository.js";
 import { CreateUseCase } from "../../../usecase_layer/todo/create/create_usecase.js";
+import { DeleteUseCase } from "../../../usecase_layer/todo/delete/delete_usecase.js";
 import { FetchAllUseCase } from "../../../usecase_layer/todo/fetch_all/fetch_all_usecase.js";
 
 export const todoController = express.Router();
@@ -69,6 +70,40 @@ todoController.post(
         hasError: true,
         errorMessage: `error: ${error}`,
         todos: [],
+      });
+    }
+  }
+);
+
+// delete
+
+interface DeleteRequest {
+  id: string;
+}
+
+interface DeleteResponse {
+  hasError: boolean;
+  errorMessage: string;
+}
+
+todoController.post(
+  "/delete",
+  async (req: express.Request, res: express.Response<DeleteResponse>) => {
+    const deleteUseCase = new DeleteUseCase(todoRepository);
+
+    const body = req.body as DeleteRequest;
+
+    try {
+      const result = await deleteUseCase.exec({ id: body.id });
+      console.log(result)
+      res.status(200).send({
+        hasError: false,
+        errorMessage: "",
+      });
+    } catch (error) {
+      res.status(500).send({
+        hasError: true,
+        errorMessage: `error: ${error}`,
       });
     }
   }
