@@ -1,10 +1,10 @@
 import express from "express";
-import { TodoType } from "../../../domain_layer/todo/todo.js";
-import { database } from "../../../infrastructure_layer/database.js";
-import { TodoRepository } from "../../../infrastructure_layer/todo/todo_repository.js";
-import { CreateUseCase } from "../../../usecase_layer/todo/create/create_usecase.js";
-import { DeleteUseCase } from "../../../usecase_layer/todo/delete/delete_usecase.js";
-import { FetchAllUseCase } from "../../../usecase_layer/todo/fetch_all/fetch_all_usecase.js";
+import { TodoType } from "../../../domain/todo/todo.js";
+import { database } from "../../../infrastructure/database.js";
+import { TodoRepository } from "../../../infrastructure/todo/todo_repository.js";
+import { CreateUseCase } from "../../../usecase/todo/create/create_usecase.js";
+import { DeleteUseCase } from "../../../usecase/todo/delete/delete_usecase.js";
+import { FetchAllUseCase } from "../../../usecase/todo/fetch_all/fetch_all_usecase.js";
 
 export const todoController = express.Router();
 

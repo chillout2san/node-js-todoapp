@@ -1,5 +1,5 @@
-import { TodoFactory } from "../../../domain_layer/todo/todo.js";
-import { TodoRepository } from "../../../infrastructure_layer/todo/todo_repository.js";
+import { TodoFactory } from "../../../domain/todo/todo.js";
+import { TodoRepository } from "../../../infrastructure/todo/todo_repository.js";
 import { InputDto } from "./create_dto.js";
 
 export class CreateUseCase {

@@ -1,4 +1,4 @@
-import { TodoRepository } from "../../../infrastructure_layer/todo/todo_repository";
+import { TodoRepository } from "../../../infrastructure/todo/todo_repository";
 import { InputDto } from "./delete_dto";
 
 export class DeleteUseCase {

@@ -1,5 +1,5 @@
 import { Connection } from "mysql2/promise.js";
-import { TodoType } from "../../domain_layer/todo/todo.js";
+import { TodoType } from "../../domain/todo/todo.js";
 
 export class TodoRepository {
   database: Promise<Connection>;

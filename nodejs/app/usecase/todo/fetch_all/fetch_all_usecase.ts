@@ -1,4 +1,4 @@
-import { TodoRepository } from "../../../infrastructure_layer/todo/todo_repository.js";
+import { TodoRepository } from "../../../infrastructure/todo/todo_repository.js";
 import { OutPutDto } from "./fetch_all_dto.js";
 
 export class FetchAllUseCase {
